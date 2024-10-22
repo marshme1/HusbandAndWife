@@ -37,17 +37,18 @@ public class PlayerController : MonoBehaviour
     }
 
     private void PlayerInput() {
-        movement = playerControls.Movement.Move.ReadValue<Vector2>();
+        movement = playerControls.Movement.Move.ReadValue<Vector2>(); //Берём вектор движения из системы InputActions
 
-        myAnimator.SetFloat("moveX", movement.x);
+        myAnimator.SetFloat("moveX", movement.x); //команда аниматору для перехода анимации. отправляет значение movement.x
         myAnimator.SetFloat("moveY", movement.y);
     }
 
     private void Move() {
-        rb.MovePosition(rb.position + movement * (moveSpeed * Time.fixedDeltaTime));
+        rb.MovePosition(rb.position + movement * (moveSpeed * Time.fixedDeltaTime));//передвигаем персонажа
     }
 
-    private void AdjustPlayerFacingDirection() {
+    private void AdjustPlayerFacingDirection()//метод, который поворачивает персонажа в сторону курсора
+ {
         Vector3 mousePos = Input.mousePosition;
         Vector3 playerScreenPoint = Camera.main.WorldToScreenPoint(transform.position);
 
