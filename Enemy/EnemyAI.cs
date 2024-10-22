@@ -24,7 +24,7 @@ public class EnemyAI : MonoBehaviour
         while (state == State.Roaming)
         {
             Vector2 roamPosition = GetRoamingPosition();
-            enemyPathfinding.MoveTo(roamPosition);
+            enemyPathfinding.MoveTo(roamPosition);//метод из скрипта EnemyPathfinding, отвечающий за движение 
             yield return new WaitForSeconds(2f);//строка ставит выполнение корутины на паузу на 2 секунды перед продолжение следующей итерации цикла. WaitForSeconds - встроенный класс в юнити, который позволяет ожидать время перед выполнением кода
         }
     }
