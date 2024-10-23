@@ -12,15 +12,16 @@ public class Flash : MonoBehaviour
     private EnemyHealth enemyHealth;
 
     private void Awake() {
-        enemyHealth = GetComponent<EnemyHealth>();
+        enemyHealth = GetComponent<EnemyHealth>(); //инициализируем скрипт EnemyHealth
         spriteRenderer = GetComponent<SpriteRenderer>();
-        defaultMat = spriteRenderer.material;
+        defaultMat = spriteRenderer.material;//присваивает переменной стартовый материал
     }
 
-    public IEnumerator FlashRoutine() {
-        spriteRenderer.material = whiteFlashMat;
-        yield return new WaitForSeconds(restoreDefaultMatTime);
-        spriteRenderer.material = defaultMat;
-        enemyHealth.DetectDeath();
+    public IEnumerator FlashRoutine()//коррутина
+    {
+        spriteRenderer.material = whiteFlashMat;//изменяем текущий материал на материал, хранящийся в переменной whiteFlashMat;
+        yield return new WaitForSeconds(restoreDefaultMatTime);//ждём время
+        spriteRenderer.material = defaultMat;//меняем материал обратно на стартовый
+        enemyHealth.DetectDeath();//проверяем объект, не умер ли
     }
 }
